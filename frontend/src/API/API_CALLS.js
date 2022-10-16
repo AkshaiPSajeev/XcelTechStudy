@@ -1,6 +1,5 @@
 import axios from 'axios';
-const ACCESS_TOKEN_URL=require('../API/API_URL')
-const GET_COUNTRYLIST_URL=require('../API/API_URL')
+import {ACCESS_TOKEN_URL,GET_COUNTRYLIST_URL} from './API_URL'
 
 
 let auth_token='';
@@ -50,4 +49,3 @@ const getStateList=()=>{
 const getCityList=()=>{
 
 }
-
