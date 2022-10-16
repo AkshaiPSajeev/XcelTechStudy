@@ -113,15 +113,34 @@ function Registration() {
     }else if(!formData.Name.match(/[A-Za-z]$/)){
         setError(true);
         setErrorMsg('Enter Valid Name');
+        setFormData((prev)=>{
+            return{
+                ...prev,
+                "Name":''
+            }
+        })
     }else if(!formData.Email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)){
         setError(true);
         setErrorMsg('Enter valid Email');
+        setFormData((prev)=>{
+            return{
+                ...prev,
+                "Email":''
+            }
+        })
+
     }else if(formData.Password.length<6){
         setError(true);
         setErrorMsg('Password length should be atleast 6')
     }else if(!formData.Mobile.match(/^\d{10}$/)){
         setError(true);
         setErrorMsg('Enter Valid phone number')
+        setFormData((prev)=>{
+            return{
+                ...prev,
+                "Mobile":''
+            }
+        })
     }else{
         axios(
             {
@@ -130,9 +149,7 @@ function Registration() {
                 data:formData
             }
         ).then((response)=>{
-            console.log('hereeeee');
-            console.log(response);
-            console.log('akdslfaksfj');
+           
             if(response.status===200){ 
                 setFormData(initialState)
                 Swal.fire({
